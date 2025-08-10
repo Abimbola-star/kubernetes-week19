@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resume-deployment
+  labels:
+    app: my-resume
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-resume
+  template:
+    metadata:
+      labels:
+        app: my-resume
+    spec:
+      containers:
+      - name: my-resume
+        image: abimbola1994/my-image-name:15
+        ports:
+        - containerPort: 5001
+        resources:
+          limits:
+            memory: "250Mi"
+          requests:
+            memory: "150Mi"
