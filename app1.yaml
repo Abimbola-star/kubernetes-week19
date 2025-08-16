@@ -24,3 +24,24 @@ spec:
             memory: "250Mi"
           requests:
             memory: "150Mi"
+        env:
+        - name: environment
+          valueFrom:
+            configMapKeyRef:
+              name: my-configmap
+              key: env
+        - name: DB_USERNAME 
+          valueFrom:
+            secretKeyRef:
+              name: mysecret 
+              key: username
+        - name: DB_PASSWORD  
+          valueFrom:
+            secretKeyRef:
+              name: mysecret 
+              key: password
+        - name: DATABASE_HOST 
+          valueFrom:
+            secretKeyRef:
+              name: mysecret 
+              key: db_host
